@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENJOY SONGS WHITOUT ADS.</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #e0f7fa; /* हल्का नीला बैकग्राउंड */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #e912c5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 2px solid #c50d0d;
+            padding: 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #d4edda; /* हल्का हरा */
+        }
+        footer {
+            background-color: #e912c5;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .search-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-box input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid #c50d0d;
+            border-radius: 5px;
+        }
+        .search-box input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #c50d0d;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .results {
+            margin: 20px;
+        }
+        .video {
+            margin-bottom: 20px;
+            border: 2px solid #c50d0d;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .video h3 {
+            margin: 0 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PALY SONGS WITHOUT ANY ADS</h1>
+        <img src="./Capture.PNG" width="150px" height="150px" alt="">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#songs">Songs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to No Ad Site</h2>
+        <p>Enjoy your favorite songs without any interruptions. We provide a seamless experience for music lovers.</p>
+    </section>
+    <section class="search-box">
+        <form id="search-form">
+            <input type="text" id="search-query" placeholder="Search for videos on YouTube">
+            <input type="submit" value="Search">
+        </form>
+    </section>
+    <section id="results" class="results"></section>
+    <section id="songs">
+        <h2>Our Popular songs</h2>
+        <table>
+            <tr>
+                
+                <th colspan="3">Songs</th>
+               
+            </tr>
+           
+            <tr>
+                <td>
+                    <iframe width="250" height="315" src="https://www.youtube.com/embed/G_ZpIa-uXL4?si=-jDD-S8eNrd9N8PL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </td>
+               
+            </tr>
+        </table>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing an ad-free music experience. Our platform is designed to let you enjoy your favorite songs without any interruptions.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or feedback, feel free to reach out to us at info@noadsite.com.</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 No Ad Site.</p>
+    </footer>
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var query = document.getElementById('search-query').value;
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&videoCategoryId=10&key=AIzaSyBEmal7bYlBeNcn-2VrdMYA60LsP7cV7Ow`)
+                .then(response => response.json())
+                .then(data => {
+                    var results = document.getElementById('results');
+                    results.innerHTML = '';
+                    data.items.forEach(item => {
+                        var video = document.createElement('div');
+                        video.classList.add('video');
+                        video.innerHTML = `
+                            <h3>${item.snippet.title}</h3>
+                            <iframe width="250" height="215" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        `;
+                        results.appendChild(video);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+    </style><style>
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgb(209, 31, 156);
+            border: 2px solid rgb(241, 219, 16);
+            box-shadow: 0 0 10px rgba(90, 7, 199, 0.1);
+            z-index: 1000;
+        }
+        .popup button {
+            margin-top: 10px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        window.onload = function() {
+            setTimeout(showPopup, 1000);// Show popup after 1 second
+        }
+    </script>
+</head>
+<body>
+    <div id="overlay" class="overlay" onclick="closePopup()"></div>
+    <div id="popup" class="popup">
+        <h2>Welcome!</h2>
+        <p>Welcome To Sharma Site.!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</head>
+<p>For more information, please email us at <a href="mailto:dksharma98012@gmail.com?subject=Subject%20Here&body=Body%20Here">Email Us.</a>
+    <p>For More Details please Call <a href="tel:+917903554745">Call Us.</a> </p> 
+    <P><h2>Thank You.</h2></P>
+    <P><h2>For visit my site.</h2></P>
+    <p><h2><strong style="color: rgb(238, 23, 16);">BY (DKSHARMA)</strong></h2></p>
+    <P><h2>.</h2></P>
+</body>
+</html>
