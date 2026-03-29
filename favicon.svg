@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favRgb" x1="6" y1="8" x2="58" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF4D4D"/>
+      <stop offset="0.34" stop-color="#2AD36E"/>
+      <stop offset="0.68" stop-color="#35C9FF"/>
+      <stop offset="1" stop-color="#5B5DFF"/>
+    </linearGradient>
+    <radialGradient id="favBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(32 24) rotate(90) scale(38)">
+      <stop stop-color="#1E2532"/>
+      <stop offset="1" stop-color="#0F131A"/>
+    </radialGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#favBg)"/>
+  <rect x="4.8" y="4.8" width="54.4" height="54.4" rx="13.2" stroke="url(#favRgb)" stroke-width="1.6"/>
+  <rect x="26" y="22" width="3.8" height="21" rx="1.9" transform="rotate(-42 26 22)" fill="url(#favRgb)"/>
+  <rect x="19.2" y="20.2" width="12" height="4.8" rx="2.4" transform="rotate(-42 19.2 20.2)" fill="url(#favRgb)"/>
+  <rect x="34.4" y="24" width="3.5" height="20" rx="1.75" transform="rotate(40 34.4 24)" fill="url(#favRgb)"/>
+  <path d="M41.8 20.6L46.7 24.8L40.7 30.8L35.8 26.6L41.8 20.6Z" fill="url(#favRgb)"/>
+  <text x="15" y="43" fill="#F8FBFF" font-size="22" font-family="Georgia, 'Times New Roman', serif" font-weight="700" letter-spacing="1">SF</text>
+</svg>
